@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
+import moment from 'moment'
 
 import './style.pcss'
 
-@inject('uiStore')
+@inject('store')
 @observer
 export default class APP extends React.Component {
   static propTypes = {
@@ -14,12 +15,42 @@ export default class APP extends React.Component {
     title: 'untitle',
   }
 
+  componentDidMount () {
+    this.props.store.init()
+  }
+
+  addGoalHandler = evt => {
+    evt.preventDefault()
+    const form = evt.target
+    if (form.title.value) {
+      this.props.store.goalStore.add({
+        title: form.title.value,
+        desc: form.desc.value,
+      })
+    }
+  }
+
   render () {
-    const { uiStore, title } = this.props
+    const { store, title } = this.props
     return (
       <div className='app'>
-        <h2>{title}</h2>
-        {uiStore.loading ? 'loading...' : 'loaded.'}
+        <h1>{title}</h1>
+        <hr />
+        <form onSubmit={this.addGoalHandler} autoComplete='off'>
+          Title: <input type='text' name='title'
+            defaultValue='Morgawr' />
+          Description: <input type='text' name='desc'
+            defaultValue='A sea serpent.' />
+          <button type='submit'>OK</button>
+        </form>
+        <hr />
+        {store.goalStore.list.map(item => (
+          <dl key={item.id}>
+            <dt>{item.title}</dt>
+            <dd>{item.desc}</dd>
+            <dd><em>{moment(item.create_time).format()}</em></dd>
+          </dl>
+        ))}
       </div>
     )
   }

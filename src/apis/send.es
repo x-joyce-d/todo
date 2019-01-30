@@ -1,8 +1,10 @@
 import fetch from 'isomorphic-fetch-improve'
 import qs from 'qs'
 
+const SUCCESS_CODES = [200, 201, 204]
+
 export default function send (method, pathname, data) {
-  let url = global.restUrl || '', body
+  let url = global.restUrl || '', headers = {}, body
   switch (method.toLowerCase()) {
     case 'get':
       url += pathname + (data ? qs.stringify(data, {
@@ -13,16 +15,22 @@ export default function send (method, pathname, data) {
     case 'put':
     case 'patch':
       url += pathname
-      body = qs.stringify(data)
+      headers['Content-Type'] = 'application/json'
+      body = JSON.stringify(data)
       break
-
+    default:
+      url += pathname
   }
   return fetch(url, {
     timeout: 30 * 1000,
-    // headers: {
-    //
-    // },
     method,
+    headers,
     body,
+  }).then(res => {
+    if (SUCCESS_CODES.indexOf(res.status) != -1) {
+      return res.json()
+    } else {
+      throw new Error(res.statusText)
+    }
   })
 }

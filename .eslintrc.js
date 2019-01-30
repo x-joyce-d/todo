@@ -11,10 +11,10 @@ module.exports = {
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,
-      "legacyDecorators": true
+      "legacyDecorators": true,
     },
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
   },
   "plugins": [
     "react",

@@ -26,17 +26,25 @@ module.exports = function ({
   server.use(jsonServer.defaults({
     static: path.join(__dirname, dev ? '../public' : 'public'),
     logger: false,
+    noCors: true,
     noGzip: dev,
+    bodyParser: true,
   }))
   server.use((req, res, next) => {
+    let user = null
+    if (req.auth) {
+      req.query.user = user = req.auth.user
+    }
     const time = Date.now()
     switch (req.method) {
       case 'POST':
-      req.body.id = uuidv4()
-      req.body.create_time = time
+        req.body.id = uuidv4()
+      case 'PUT':
+        req.body.user = user
+        req.body.create_time = time
       case 'PATCH':
-      req.body.update_time = time
-      break
+        req.body.update_time = time
+        break
     }
     next()
   }, router)

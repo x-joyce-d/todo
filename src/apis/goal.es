@@ -12,6 +12,10 @@ export async function remove (id) {
   return send('delete', '/goals/'+id)
 }
 
+export async function get (id) {
+  return send('get', '/goals'+id)
+}
+
 export async function query () {
   return send('get', '/goals')
 }
