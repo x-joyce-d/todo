@@ -13,7 +13,13 @@ export default class APP extends React.Component {
 	static defaultProps = {
 		title: 'make a plan',
 	}
-
+	componentWillMount () {
+		// this.store.goalStore.list.map(item.index)=>{
+		// 	switch(){
+		// 		case '1':
+		// 	}
+		// }
+	}
 	componentDidMount () {
 		this.props.store.init()
 	}
@@ -26,7 +32,17 @@ export default class APP extends React.Component {
 			})
 		}
 	}
-
+	handleClick = evt => {
+		evt.preventDefault()
+		const item = evt.target
+		if (item.id) {
+			this.props.store.goalStore.remove()
+		}
+		// var index=evt.target.getAttribute("data-index")
+		// var list=this.props.store.goalStore.list;
+		// list.splice(index,1)
+		// this.setState({list:list})
+	}
 	render () {
 		const { store, title } = this.props
 		var myStyle = {
@@ -39,30 +55,27 @@ export default class APP extends React.Component {
 		};
 		return (
 			<div className='app'>
-				<button type="submit" >返回</button>
 				<h1>{title}</h1>
 				<hr />
 				<form onSubmit={this.addGoalHandler} autoComplete='off'>
 					<textarea placeholder="please write your plan..." style = {myStyle} name="content" defaultValue="oops,oops,oops,oops,"></textarea>
-					<button type='submit' style = {submit}>submit</button>
+					<button type='submit' style = {submit}>add</button>
 				</form>
 				<hr />
 				{store.goalStore.list.map((item,index) => (
 					<dl key={item.id}>
 						<dt>{item.content}</dt>
-						{/*<button className="del" onClick={handleClick}>删除</button>*/}
+						<button className="del" onClick={this.handleClick} data-index={this.index}>delete</button>
+						<button className="modify" onClick={this.handleChange} data-index={this.index}>modify</button>
+						{/**/}
 						<hr />
 							<div className="secondList"></div>
 								<ul>
 									<li>get up at 5:00 am.</li>
 								</ul>
 						<dd><em>{moment(item.create_time).format()}</em></dd>
-						{/**/}
 					</dl>
 				))}
-				<div>
-					<h2></h2>
-				</div>
 			</div>
 		)
 	}
