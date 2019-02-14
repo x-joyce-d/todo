@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import moment from 'moment'
 import './style.pcss'
+import List from '../List'
+import Form from '../Form'
 
 @inject('store')
 @observer
@@ -13,69 +15,27 @@ export default class APP extends React.Component {
 	static defaultProps = {
 		title: 'make a plan',
 	}
-	componentWillMount () {
-		// this.store.goalStore.list.map(item.index)=>{
-		// 	switch(){
-		// 		case '1':
-		// 	}
-		// }
-	}
-	componentDidMount () {
-		this.props.store.init()
-	}
-	addGoalHandler = evt => {
-		evt.preventDefault()
-		const form = evt.target
-		if (form.content.value) {
-			this.props.store.goalStore.add({
-				content: form.content.value,
-			})
-		}
-	}
-	handleClick = evt => {
-		evt.preventDefault()
-		const item = evt.target
-		if (item.id) {
-			this.props.store.goalStore.remove()
-		}
-		// var index=evt.target.getAttribute("data-index")
-		// var list=this.props.store.goalStore.list;
-		// list.splice(index,1)
-		// this.setState({list:list})
-	}
+
 	render () {
 		const { store, title } = this.props
-		var myStyle = {
-			width:450,
-			minHeight:200,
-			fontSize:16,
-		};
-		var submit = {
-			marginLeft:10,
-		};
+    let mainBody = null
+    switch (store.uiStore.path) {
+      case '/add':
+      case '/modify':
+        mainBody = <Form />
+        break
+      default:
+        mainBody = <List />
+    }
 		return (
 			<div className='app'>
-				<h1>{title}</h1>
-				<hr />
-				<form onSubmit={this.addGoalHandler} autoComplete='off'>
-					<textarea placeholder="please write your plan..." style = {myStyle} name="content" defaultValue="oops,oops,oops,oops,"></textarea>
-					<button type='submit' style = {submit}>add</button>
-				</form>
-				<hr />
-				{store.goalStore.list.map((item,index) => (
-					<dl key={item.id}>
-						<dt>{item.content}</dt>
-						<button className="del" onClick={this.handleClick} data-index={this.index}>delete</button>
-						<button className="modify" onClick={this.handleChange} data-index={this.index}>modify</button>
-						{/**/}
-						<hr />
-							<div className="secondList"></div>
-								<ul>
-									<li>get up at 5:00 am.</li>
-								</ul>
-						<dd><em>{moment(item.create_time).format()}</em></dd>
-					</dl>
-				))}
+        <div className="container">
+          <nav className="navbar">
+            <span className="navbar-brand">{title}</span>
+            <button type="button" className="btn btn-primary" onClick={evt => store.uiStore.showForm()}>+</button>
+          </nav>
+          {mainBody}
+        </div>
 			</div>
 		)
 	}

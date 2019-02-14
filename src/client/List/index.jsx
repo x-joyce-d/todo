@@ -10,7 +10,7 @@ import './style.pcss'
 export default class List extends  React.Component{
 	render(){
 		return(
-			<div>dfagsdfg</div>
+			<div>developing...</div>
 		)
 	}
 }
