@@ -3,7 +3,7 @@ import * as goalApis from '../apis/goal'
 
 export default class {
 
-  @observable list = []
+	@observable list = []
 
   query:Function = async () => {
     this.list = await goalApis.query()
@@ -13,4 +13,7 @@ export default class {
     const item = await goalApis.add(data)
     this.list.push(item)
   }
+	delete:Function =async () => {
+		await  goalApis.delete()
+	}
 }
