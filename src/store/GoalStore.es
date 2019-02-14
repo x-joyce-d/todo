@@ -13,7 +13,7 @@ export default class {
     const item = await goalApis.add(data)
     this.list.push(item)
   }
-	delete:Function =async () => {
-		await  goalApis.delete()
+	remove:Function = async (id) => {
+		await  goalApis.remove()
 	}
 }
