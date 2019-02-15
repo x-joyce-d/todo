@@ -25,7 +25,7 @@ export default class List extends  React.Component{
 		return(
 			<div>
 				{store.goalStore.list.map(item=>(
-					<ul className="list-group" key={item.id}>
+					<ul className="list-group " key={item.id}>
 						<li className="list-group-item active">
 								<h4 className="list-group-item-heading">{item.content}
 								</h4>
@@ -35,7 +35,8 @@ export default class List extends  React.Component{
 								<em>{moment(item.create_time).format()}</em>
 								</p>
 								<button type="button" className="btn btn-info" onClick={this.handleChange}>change</button>&nbsp;&nbsp;
-								<button type="button" className="btn btn-warning">delete</button>
+								<button type="button" className="btn btn-warning">delete
+								</button>
 								{/*<button type="button" className="btn btn-warning" onClick={this.handleDelete(item.id)}>delete</button>*/}
 						</li>
 					</ul>

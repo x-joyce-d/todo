@@ -17,24 +17,25 @@ export default class Form extends React.Component {
 				content:form.content.value,
 				desc:form.desc.value
 			})
+			this.props.store.uiStore.goHome()
 		}
 	}
-  render () {
+	render () {
 		const { store, title } = this.props
-    return (
-      <form onSubmit={this.addGoalHandler} autoComplete="off">
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">big plan</label>
-          <textarea type="text" className="form-control" classID="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter big plan" defaultValue="wowwowwwoowowo" name="content">
+		return (
+			<form onSubmit={this.addGoalHandler} autoComplete="off">
+				<div className="form-group">
+					<label htmlFor="exampleInputEmail1">big plan</label>
+					<textarea type="text" className="form-control" classID="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter big plan" defaultValue="wowwowwwoowowo" name="content">
 					</textarea>
-          <small classID="emailHelp" className="form-text text-muted">hhahahhahahhahha</small>
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">small plan</label>
-          <input type="text" className="form-control" classID="exampleInputPassword1" placeholder="enter small plan" defaultValue="eeeeeeeeeeeeeeeeeee" name="desc"/>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
-    )
-  }
+					<small classID="emailHelp" className="form-text text-muted">hhahahhahahhahha</small>
+				</div>
+				<div className="form-group">
+					<label htmlFor="exampleInputPassword1">small plan</label>
+					<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="enter small plan" defaultValue="eeeeeeeeeeeeeeeeeee" name="desc"/>
+				</div>
+				<button type="submit" className="btn btn-primary">Submit</button>
+			</form>
+		)
+	}
 }

@@ -16,4 +16,7 @@ export default class {
 	remove:Function = async (id) => {
 		await  goalApis.remove()
 	}
+	modify:Function = async (id) => {
+		await  goalApis.modify()
+	}
 }

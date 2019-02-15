@@ -37,15 +37,15 @@ export default class APP extends React.Component {
 			<div className='app'>
 				<div className="container">
 					<nav className="navbar">
-						<span className="navbar-brand">{title}</span>
-						<button type="button" className="btn btn-primary" onClick={evt=>store.uiStore.goHome()}>back</button>
+						<div>
+							<span className="navbar-brand">{title}</span>
+						</div>
 						<hr/>
-						<button type="button" className="btn btn-primary" onClick={evt => store.uiStore.showForm()}>+</button>
-						<hr/>
+						<button type="button" className="btn btn-primary" onClick={evt=>store.uiStore.goHome()}>back</button>&nbsp;&nbsp;
+						<button type="button" className="btn btn-primary" onClick={evt => store.uiStore.showForm()}>+</button>&nbsp;&nbsp;
 						<button type="button" className="btn btn-primary" onClick={evt => store.uiStore.showProgress()}>look progress</button>
 						<hr/>
 					</nav>
-					{/**/}
 					{mainBody}
 				</div>
 			</div>
