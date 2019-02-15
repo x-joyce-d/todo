@@ -9,15 +9,10 @@ export default class Form extends React.Component {
 	render () {
 		return (
 			<div className="progress">
-				<div className="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" >
+				<div className="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
 					<span className="sr-only">40% Complete </span>
 				</div>
 			</div>
-			{/*<div className="progress">
-							<div className="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style={width:20%}>
-								<span className="sr-only">40% Complete </span>
-							</div>
-						</div>*/}
 		)
 	}
 }
