@@ -12,7 +12,9 @@ export default class {
   goHome ():void {
     this.path = '/'
   }
-
+	showProgress ():void {
+		this.path = '/attention'
+	}
   showForm (data:?Object):void {
     this.path = data ? '/modify' : '/add'
 
