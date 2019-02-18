@@ -16,10 +16,17 @@ export default class APP extends React.Component {
 	static defaultProps = {
 		title: 'make a plan',
 	}
+	componentDidMount(){
+		this.props.store.init()
+	}
+	handleAdd = (evt) => {
+		this.props.store.showDetail()
+	}
 	render () {
 		const { store, title } = this.props
 		let mainBody = null
 		switch (store.uiStore.path) {
+			case '/detail':
 			case '/add':
 			case '/modify':
 				mainBody = <Form />
@@ -41,9 +48,8 @@ export default class APP extends React.Component {
 							<span className="navbar-brand">{title}</span>
 						</div>
 						<hr/>
-						<button type="button" className="btn btn-primary" onClick={evt=>store.uiStore.goHome()}>back</button>&nbsp;&nbsp;
-						<button type="button" className="btn btn-primary" onClick={evt => store.uiStore.showForm()}>+</button>&nbsp;&nbsp;
-						<button type="button" className="btn btn-primary" onClick={evt => store.uiStore.showProgress()}>look progress</button>
+						<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>&nbsp;&nbsp;
+						<button type="button" className="btn btn-primary" onClick={evt => this.handleAdd()}>+</button>&nbsp;&nbsp;
 						<hr/>
 					</nav>
 					{mainBody}

@@ -17,8 +17,14 @@ export default class List extends  React.Component{
 	componentDidMount(){
 		this.props.store.init()
 	}
-	handleChange = evt =>{
-		evt.preventDefault()
+	handleDetail = (evt,item) =>{
+		this.props.store.showDetail(item.id)
+	}
+	handleDelete = (evt,item) =>{
+		this.props.store.goalStore.remove(item.id)
+	}
+	handleProgress = (evt,item) => {
+		this.props.store.showProgress(item.id)
 	}
 	render(){
 		const { store, title } = this.props
@@ -26,7 +32,7 @@ export default class List extends  React.Component{
 			<div>
 				{store.goalStore.list.map(item=>(
 					<ul className="list-group " key={item.id}>
-						<li className="list-group-item active">
+						<li className="list-group-item active" checked>
 								<h4 className="list-group-item-heading">{item.content}
 								</h4>
 								<p className="list-group-item-text" >
@@ -34,10 +40,9 @@ export default class List extends  React.Component{
 								<p className="list-group-item-text" >
 								<em>{moment(item.create_time).format()}</em>
 								</p>
-								<button type="button" className="btn btn-info" onClick={this.handleChange}>change</button>&nbsp;&nbsp;
-								<button type="button" className="btn btn-warning">delete
-								</button>
-								{/*<button type="button" className="btn btn-warning" onClick={this.handleDelete(item.id)}>delete</button>*/}
+								<button type="button" className="btn btn-info" onClick={evt => this.handleDetail(evt,item)} data-index={this.index} >detail</button>&nbsp;&nbsp;
+								<button type="button" className="btn btn-warning" onClick={evt => this.handleDelete(evt,item)}>delete</button>&nbsp;&nbsp;
+								<button type="button" className="btn btn-success" onClick={evt => this.handleProgress(evt,item)}>look progress</button>
 						</li>
 					</ul>
 				))}

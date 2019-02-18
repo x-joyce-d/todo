@@ -8,15 +8,4 @@ export default class {
   showError (e:Error):void {
     alert(e.message)
   }
-
-  goHome ():void {
-    this.path = '/'
-  }
-	showProgress ():void {
-		this.path = '/attention'
-	}
-  showForm (data:?Object):void {
-    this.path = data ? '/modify' : '/add'
-
-  }
 }

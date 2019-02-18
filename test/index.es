@@ -15,11 +15,6 @@ describe('goal', () => {
         title: 'english',
         desc: 'cet-6',
 				content: '',
-				children:[
-					{
-						title:'',
-					}
-				]
       })
       assert.equal(data.title, 'english')
     })

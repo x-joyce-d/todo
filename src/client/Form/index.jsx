@@ -9,30 +9,37 @@ export default class Form extends React.Component {
 	componentDidMount(){
 		this.props.store.init()
 	}
-	addGoalHandler=evt=>{
+	submitGoalHandler=evt=>{
 		evt.preventDefault()
 		const form=evt.target
 		if(form.content.value && form.desc.value){
+			this.props.store.goalStore.modify({
+				content:form.content.value,
+				desc:form.desc.value,
+				id:this.props.store.goalStore.currentId,
+			})
+		}else{
 			this.props.store.goalStore.add({
 				content:form.content.value,
-				desc:form.desc.value
+				desc:form.desc.value,
 			})
-			this.props.store.uiStore.goHome()
 		}
+		this.props.store.goHome()
 	}
 	render () {
 		const { store, title } = this.props
+		const { content, desc } = store.goalStore.currentItem || {}
 		return (
-			<form onSubmit={this.addGoalHandler} autoComplete="off">
+			<form onSubmit={this.submitGoalHandler} autoComplete="off">
 				<div className="form-group">
 					<label htmlFor="exampleInputEmail1">big plan</label>
-					<textarea type="text" className="form-control" classID="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter big plan" defaultValue="wowwowwwoowowo" name="content">
-					</textarea>
+					<input type="text" className="form-control" classID="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter big plan" name="content" defaultValue={content}>
+					</input>
 					<small classID="emailHelp" className="form-text text-muted">hhahahhahahhahha</small>
 				</div>
 				<div className="form-group">
 					<label htmlFor="exampleInputPassword1">small plan</label>
-					<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="enter small plan" defaultValue="eeeeeeeeeeeeeeeeeee" name="desc"/>
+					<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="enter small plan" name="desc" defaultValue={desc}/>
 				</div>
 				<button type="submit" className="btn btn-primary">Submit</button>
 			</form>
