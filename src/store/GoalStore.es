@@ -9,20 +9,20 @@ export default class {
 	@computed get currentItem(){
 		return this.list.find(item => item.id === this.currentId)
 	}
-  query:Function = async () => {
-    this.list = await goalApis.query()
-  }
+	query:Function = async () => {
+		this.list = await goalApis.query()
+	}
 	get:Function = async (id) => {
-    this.detailData = await goalApis.get(id)
-  }
+		this.detailData = await goalApis.get(id)
+	}
 	remove:Function = async (id:String) => {
 		this.currentId = id
 		await goalApis.remove(this.currentId)
 	}
-  add:Function = async (data:Object) => {
-    const item = await goalApis.add(data)
-    this.list.push(item)
-  }
+	add:Function = async (data:Object) => {
+		const item = await goalApis.add(data)
+		this.list.push(item)
+	}
 	modify:Function = async (id:String) => {
 		this.currentId = id
 		await  goalApis.modify(this.currentId)

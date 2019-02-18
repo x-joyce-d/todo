@@ -22,6 +22,7 @@ export default class Form extends React.Component {
 						<p className="list-group-item-text" >
 						<em>{moment(create_time).format()}</em>
 						</p>
+						<button type="button" className="btn btn-info">do it</button>
 				</div>
 		)
 	}
