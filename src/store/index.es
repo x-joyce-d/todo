@@ -1,9 +1,12 @@
 import {action} from 'mobx'
 import UiStore from './UiStore'
 import GoalStore from './GoalStore'
+import FeedbackStore from './FeedbackStore'
+
 class MainStore {
   uiStore = new UiStore()
   goalStore = new GoalStore()
+  feedbackStore = new FeedbackStore()
 
   init:Function = async () => {
     this.uiStore.loading = true

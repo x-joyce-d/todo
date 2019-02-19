@@ -1,7 +1,7 @@
 import send from './send'
 
 export async function add (data) {
-  return send('post', '/goals/', data)
+  return send('post', '/goals', data)
 }
 
 export async function modify ({id, ...data}) {
