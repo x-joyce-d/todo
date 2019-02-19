@@ -40,6 +40,9 @@ export default class List extends  React.Component{
 								<p className="list-group-item-text" >
 								<em>{moment(item.create_time).format()}</em>
 								</p>
+								<p className="list-group-item-text" >
+								<em></em>
+								</p>
 								<button type="button" className="btn btn-info" onClick={evt => this.handleDetail(evt,item)} data-index={this.index} >detail</button>&nbsp;&nbsp;
 								<button type="button" className="btn btn-warning" onClick={evt => this.handleDelete(evt,item)}>delete</button>&nbsp;&nbsp;
 								<button type="button" className="btn btn-success" onClick={evt => this.handleProgress(evt,item)}>look progress</button>

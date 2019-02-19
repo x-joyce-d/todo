@@ -49,14 +49,14 @@ export default class APP extends React.Component {
 				<div className="container">
 					<div className="title">{title}</div>
 					<ul className="list nav nav-pills">
-					  <li role="presentation" className="active">
-							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
-						</li>
 					  <li role="presentation">
 							<button type="button" className="btn btn-primary" onClick={evt => this.handleAdd()}>add</button>
 						</li>
 					  <li role="presentation">
 							<button type="button" className="btn btn-primary" onClick={evt => store.showFeedback()}>feedback</button>
+						</li>
+						<li role="presentation" className="active">
+							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
 						</li>
 					</ul>
 					<hr />

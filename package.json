@@ -28,6 +28,7 @@
     "prop-types": "^15.6.2",
     "qs": "^6.6.0",
     "react": "^16.7.0",
+    "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.7.0",
     "uuid": "^3.3.2"
   },

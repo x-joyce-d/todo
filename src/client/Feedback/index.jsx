@@ -21,7 +21,7 @@ export default class Feedback extends React.Component{
 				<form onSubmit={this.submitGoalHandler} autoComplete="off">
 					<div className="form-group">
 						<label htmlFor="exampleInputPassword1">your suggestion:</label>
-						<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="please enter your suggestion about improving us" name="desc"/>
+						<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="please enter your suggestion" name="desc"/>
 					</div>
 					<button type="submit" className="btn btn-primary">Submit</button>
 				</form>
