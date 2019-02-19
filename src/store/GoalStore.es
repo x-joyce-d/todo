@@ -5,6 +5,7 @@ export default class {
 
 	@observable list = []
 	@observable currentId = ''
+	@observable bgColor = ''
 
 	@computed get currentItem(){
 		return this.list.find(item => item.id === this.currentId)

@@ -32,7 +32,7 @@ export default class List extends  React.Component{
 			<div>
 				{store.goalStore.list.map(item=>(
 					<ul className="list-group " key={item.id}>
-						<li className="list-group-item active" checked>
+						<li className="list-group-item active">
 								<h4 className="list-group-item-heading">{item.content}
 								</h4>
 								<p className="list-group-item-text" >
