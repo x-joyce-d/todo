@@ -31,6 +31,9 @@ class MainStore {
 	showForm (data:?Object):void {
 		this.uiStore.path = data ? '/modify' : '/add'
 	}
+	showFeedback ():void {
+		this.uiStore.path = '/feedback'
+	}
 }
 
 export default new MainStore()

@@ -7,6 +7,7 @@ require('babel-register')(loadJsonFile.sync(path.resolve('.babelrc')))
 
 global.restUrl = `http://test:${users.test}@localhost:3000`
 const goalApis = require('../src/apis/goal')
+const feedbackApis = require('../src/apis/feedback')
 
 describe('goal', () => {
   describe('add()', () => {
@@ -19,6 +20,16 @@ describe('goal', () => {
       assert.equal(data.title, 'english')
     })
   })
+
+	describe('feedback', () => {
+	  describe('add()', () => {
+	    it('normal', async () => {
+	      const data = await feedbackApis.add({
+					describe: '',
+	      })
+	      assert.equal(data.title, 'english')
+	    })
+	  })
 
   describe('query()', () => {
     it('normal', async () => {

@@ -6,6 +6,7 @@ import './style.pcss'
 import List from '../List'
 import Form from '../Form'
 import Attention from '../Attention'
+import Feedback from '../Feedback'
 
 @inject('store')
 @observer
@@ -34,6 +35,9 @@ export default class APP extends React.Component {
 			case '/attention':
 				mainBody = <Attention />
 				break
+			case '/feedback':
+				mainBody = <Feedback />
+				break
 			case '/':
 				mainBody =<List />
 				break
@@ -43,15 +47,19 @@ export default class APP extends React.Component {
 		return (
 			<div className='app'>
 				<div className="container">
-					<nav className="navbar">
-						<div>
-							<span className="navbar-brand">{title}</span>
-						</div>
-						<hr/>
-						<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>&nbsp;&nbsp;
-						<button type="button" className="btn btn-primary" onClick={evt => this.handleAdd()}>+</button>&nbsp;&nbsp;
-						<hr/>
-					</nav>
+					<div className="title">{title}</div>
+					<ul className="list nav nav-pills">
+					  <li role="presentation" className="active">
+							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
+						</li>
+					  <li role="presentation">
+							<button type="button" className="btn btn-primary" onClick={evt => this.handleAdd()}>add</button>
+						</li>
+					  <li role="presentation">
+							<button type="button" className="btn btn-primary" onClick={evt => store.showFeedback()}>feedback</button>
+						</li>
+					</ul>
+					<hr />
 					{mainBody}
 				</div>
 			</div>
