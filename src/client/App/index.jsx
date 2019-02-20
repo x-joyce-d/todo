@@ -27,22 +27,19 @@ export default class APP extends React.Component {
 		const { store, title } = this.props
 		let mainBody = null
 		switch (store.uiStore.path) {
+			case '/':
+				store.uiStore.listVis='show'
+				break
 			case '/detail':
 			case '/add':
 			case '/modify':
-				mainBody = <Form />
-				break
-			case '/attention':
-				mainBody = <Attention />
+				store.uiStore.isShow='show'
 				break
 			case '/feedback':
-				mainBody = <Feedback />
+				store.uiStore.fdVis='show'
 				break
-			case '/':
-				mainBody =<List />
-				break
-			default:
-				mainBody = <List />
+			case '/attention':
+				store.uiStore.attentionVis='show'
 		}
 		return (
 			<div className='app'>
@@ -60,7 +57,13 @@ export default class APP extends React.Component {
 						</li>
 					</ul>
 					<hr />
-					{mainBody}
+					{
+						store.uiStore.isShow && <Form />
+					}
+					<div>
+						<List className={store.uiStore.listVis ? 'show':'hidden'}/>
+						<Form className={store.uiStore.isShow ? 'show':'hidden'}/>
+					</div>
 				</div>
 			</div>
 		)

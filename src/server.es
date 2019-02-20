@@ -7,52 +7,52 @@ import uuidv4 from 'uuid/v4'
 const dev = process.env.NODE_ENV === 'development'
 
 module.exports = function ({
-  routes = 'db.json',
-  port = 3000,
-  users = null,
+	routes = 'db.json',
+	port = 3000,
+	users = null,
 } = {}) {
-  const server = jsonServer.create()
-  const router = jsonServer.router(path.resolve(routes))
+	const server = jsonServer.create()
+	const router = jsonServer.router(path.resolve(routes))
 
-  if (dev) {
-    const compiler = require('webpack')(require('../webpack.config'))
-    server.use(require('webpack-dev-middleware')(compiler))
-  }
+	if (dev) {
+		const compiler = require('webpack')(require('../webpack.config'))
+		server.use(require('webpack-dev-middleware')(compiler))
+	}
 
-  users && server.use(basicAuth({
-    users,
-    challenge: true,
-  }))
-  server.use(jsonServer.defaults({
-    static: path.join(__dirname, dev ? '../public' : 'public'),
-    logger: false,
-    noCors: true,
-    noGzip: dev,
-    bodyParser: true,
-  }))
-  server.use((req, res, next) => {
-    let user = null
-    if (req.auth) {
-      req.query.user = user = req.auth.user
-    }
-    const time = Date.now()
-    switch (req.method) {
-      case 'POST':
-        req.body.id = uuidv4()
-      case 'PUT':
-        req.body.user = user
-        req.body.create_time = time
+	users && server.use(basicAuth({
+		users,
+		challenge: true,
+	}))
+	server.use(jsonServer.defaults({
+		static: path.join(__dirname, dev ? '../public' : 'public'),
+		logger: false,
+		noCors: true,
+		noGzip: dev,
+		bodyParser: true,
+	}))
+	server.use((req, res, next) => {
+		let user = null
+		if (req.auth) {
+			req.query.user = user = req.auth.user
+		}
+		const time = Date.now()
+		switch (req.method) {
+			case 'POST':
+				req.body.id = uuidv4()
+			case 'PUT':
+				req.body.user = user
+				req.body.create_time = time
 				req.body.intendStart_time = time
-      case 'PATCH':
-        req.body.update_time = time
 				req.body.intendFinish_time = time
 				req.body.actual_time = time
-        break
-    }
-    next()
-  }, router)
+			case 'PATCH':
+				req.body.update_time = time
+				break
+		}
+		next()
+	}, router)
 
-  server.listen(port, () => {
-    console.log(`http://localhost:${port}/index.html`)
-  })
+	server.listen(port, () => {
+		console.log(`http://localhost:${port}/index.html`)
+	})
 }

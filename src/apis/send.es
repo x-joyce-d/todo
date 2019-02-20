@@ -23,7 +23,7 @@ export default function send (method, pathname, data) {
   }
   return fetch(url, {
     timeout: 30 * 1000,
-    method,
+    method: method.toUpperCase(),
     headers,
     body,
   }).then(res => {
