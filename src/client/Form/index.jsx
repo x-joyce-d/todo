@@ -12,10 +12,6 @@ export default class Form extends React.Component {
 	submitGoalHandler=evt=>{
 		evt.preventDefault()
 		const form=evt.target
-		// this.props.store.goalStore.add({
-		// 	content:form.content.value,
-		// 	desc:form.desc.value,
-		// })
 		if(form.content.value && form.desc.value){
 			this.props.store.goalStore.modify({
 				content:form.content.value,

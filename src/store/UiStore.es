@@ -4,10 +4,10 @@ export default class {
   @observable loading = false
 
 	@observable path = '/'
-	@observable isShow ='hidden'
-	@observable listVis ='hidden'
-	@observable fdVis ='hidden'
-  @observable attentionVis ='hidden'
+	@observable isShow =false
+	@observable listVis =false
+	@observable fdVis =false
+  @observable attentionVis =false
 
   showError (e:Error):void {
     alert(e.message)
