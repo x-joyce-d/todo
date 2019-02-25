@@ -61,18 +61,12 @@ export default class APP extends React.Component {
 						{
 							store.uiStore.listVis && <List/>
 						}
-					</div>
-					<div>
 						{
 							store.uiStore.isShow && <Form />
 						}
-					</div>
-					<div>
 						{
 							store.uiStore.fdVis && <Feedback/>
 						}
-					</div>
-					<div>
 						{
 							store.uiStore.attentionVis && <Attention/>
 						}

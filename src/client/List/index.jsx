@@ -35,7 +35,7 @@ export default class List extends React.Component{
 						<li className="list-group-item active">
 								<h4 className="list-group-item-heading">{item.content}
 								</h4>
-								<p className="list-group-item-text" >
+								<p className="list-group-item-text" >{item.desc}
 								</p>
 								<p className="list-group-item-text" >
 								<em>{moment(item.create_time).format()}</em>

@@ -14,7 +14,7 @@ describe('goal', () => {
     it('normal', async () => {
       const data = await goalApis.add({
         title: 'english',
-        desc: 'cet-6',
+        desc: '',
 				content: '',
       })
       assert.equal(data.title, 'english')
