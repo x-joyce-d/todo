@@ -26,10 +26,25 @@ export default class List extends React.Component{
 	handleProgress = (evt,item) => {
 		this.props.store.showProgress(item.id)
 	}
+	computeProgress ({beginTime, endTime}) {
+		beginTime = moment(beginTime).toDate().getTime()
+		endTime = moment(endTime).toDate().getTime()
+		const now = Date.now()
+		if (now > endTime) {
+			return 100
+		} else if (now < beginTime) {
+			return 0
+		}
+		const value = (now - beginTime)/(endTime - beginTime)
+		if (isNaN(value)) {
+			return 0
+		}
+		return Math.floor(value*100)
+	}
 	render(){
-		const { store, title } = this.props
+		const { store, title, visible } = this.props
 		return(
-			<div>
+			<div className={!visible ? 'list_hidden' : ''}>
 				{store.goalStore.list.map(item=>(
 					<ul className="list-group " key={item.id}>
 						<li className="list-group-item active">
@@ -38,11 +53,13 @@ export default class List extends React.Component{
 								<p className="list-group-item-text" >{item.desc}
 								</p>
 								<p className="list-group-item-text" >
-								<em>{moment(item.create_time).format()}</em>
+								<em>{moment(item.create_time).format("YYYY-MM-DD HH:mm")}</em>
+								</p>
+								<p>
+									<meter value={this.computeProgress(item)} max="100" high="80"></meter>
 								</p>
 								<button type="button" className="btn btn-info" onClick={evt => this.handleDetail(evt,item)} data-index={this.index} >detail</button>&nbsp;&nbsp;
 								<button type="button" className="btn btn-warning" onClick={evt => this.handleDelete(evt,item)}>delete</button>&nbsp;&nbsp;
-								<button type="button" className="btn btn-success" onClick={evt => this.handleProgress(evt,item)}>look progress</button>
 						</li>
 					</ul>
 				))}

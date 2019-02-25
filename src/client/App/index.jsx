@@ -5,7 +5,7 @@ import moment from 'moment'
 import './style.pcss'
 import List from '../List'
 import Form from '../Form'
-import Attention from '../Attention'
+// import Attention from '../Attention'
 import Feedback from '../Feedback'
 
 @inject('store')
@@ -27,19 +27,17 @@ export default class APP extends React.Component {
 		const { store, title } = this.props
 		let mainBody = null
 		switch (store.uiStore.path) {
-			case '/':
-				store.uiStore.listVis=true
-				break
 			case '/detail':
 			case '/add':
 			case '/modify':
-				store.uiStore.isShow=true
+				mainBody=<Form />
 				break
 			case '/feedback':
-				store.uiStore.fdVis=true
+				mainBody=<Feedback />
 				break
-			case '/attention':
-				store.uiStore.attentionVis=true
+			// case '/attention':
+			// 	mainBody=<Attention />
+			// 	break
 		}
 		return (
 			<div className='app'>
@@ -58,22 +56,12 @@ export default class APP extends React.Component {
 					</ul>
 					<hr />
 					<div>
-						{
-							store.uiStore.listVis && <List/>
-						}
-						{
-							store.uiStore.isShow && <Form />
-						}
-						{
-							store.uiStore.fdVis && <Feedback/>
-						}
-						{
-							store.uiStore.attentionVis && <Attention/>
-						}
+						<List visible={mainBody===null} />
 					</div>
+					{mainBody}
 			{/*<div>
-						<List className={store.uiStore.listVis ? true:'hidden'}/>
-						<Form className={store.uiStore.isShow ? true:'hidden'}/>
+						<List className={store.uiStore.listVis ? 'show':'hidden'}/>
+						<Form className={store.uiStore.isShow ? 'show':'hidden'}/>
 					</div>*/}
 				</div>
 			</div>

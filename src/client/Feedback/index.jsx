@@ -14,6 +14,7 @@ export default class Feedback extends React.Component{
 		this.props.store.feedbackStore.add({
 			describe:form.desc.value
 		})
+		this.props.store.goHome()
 	}
 	render(){
 		return(

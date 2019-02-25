@@ -26,7 +26,7 @@ export default class Form extends React.Component {
 	}
 	render () {
 		const {store,title} = this.props
-		const {content,desc,create_time,} = store.goalStore.currentItem
+		const {content,desc,create_time} = store.goalStore.currentItem
 		return (
 			<div className="container">
 				<div className="list-group-item active">
@@ -41,8 +41,8 @@ export default class Form extends React.Component {
 						<p className="list-group-item-text" >
 						<em>{moment(create_time).format()}</em><br/>
 						</p>
-						<div className="progress">
-							<div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" >40%</div>
+						<div>
+							<progress value="10" max="100">40%</progress>
 							<p className="notice">you have to do it !!</p>
 						</div>
 						<button type="button" className="btn btn-info" onClick={evt => this.lookProgress()}>do it</button>
