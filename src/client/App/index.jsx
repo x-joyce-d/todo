@@ -5,7 +5,6 @@ import moment from 'moment'
 import './style.pcss'
 import List from '../List'
 import Form from '../Form'
-// import Attention from '../Attention'
 import Feedback from '../Feedback'
 
 @inject('store')
@@ -35,9 +34,6 @@ export default class APP extends React.Component {
 			case '/feedback':
 				mainBody=<Feedback />
 				break
-			// case '/attention':
-			// 	mainBody=<Attention />
-			// 	break
 		}
 		return (
 			<div className='app'>

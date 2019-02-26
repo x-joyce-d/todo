@@ -42,9 +42,6 @@ module.exports = function ({
 			case 'PUT':
 				req.body.user = user
 				req.body.create_time = time
-				// req.body.intendStart_time = time
-				// req.body.intendFinish_time = time
-				// req.body.actual_time = time
 			case 'PATCH':
 				req.body.update_time = time
 				break
