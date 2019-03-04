@@ -34,6 +34,9 @@ class MainStore {
 	showFeedback ():void {
 		this.uiStore.path = '/feedback'
 	}
+  showAboutme ():void {
+		this.uiStore.path = '/aboutme'
+	}
 }
 
 export default new MainStore()

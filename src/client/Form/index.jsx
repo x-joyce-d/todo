@@ -8,9 +8,9 @@ import './style.pcss'
 @observer
 export default class Form extends React.Component {
 	componentDidMount(){
-		this.props.store.init()
+		this.props.store.init();
 	}
-	submitGoalHandler=evt=>{
+	submitGoalHandler=evt=>{ //提交表单
 		evt.preventDefault()
 		const form=evt.target
 		const {currentId} = this.props.store.goalStore
@@ -30,7 +30,7 @@ export default class Form extends React.Component {
 		}
 		this.props.store.goHome()
 	}
-  handleCancel=evt=>{
+  handleCancel = evt => {
     this.props.store.goHome()
   }
 	render () {
@@ -41,13 +41,13 @@ export default class Form extends React.Component {
 			<form onSubmit={this.submitGoalHandler} autoComplete="off">
 				<div className="form-group">
 					<label htmlFor="exampleInputEmail1">title</label>
-					<input type="text" className="form-control" classID="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter big plan" name="content" defaultValue={content}>
+					<input type="text" className="form-control" classID="exampleInputEmail1" aria-describedby="emailHelp" placeholder="please Enter title" name="content" defaultValue={content}>
 					</input>
 					<small classID="emailHelp" className="form-text text-muted">hhahahhahahhahha</small>
 				</div>
 				<div className="form-group">
 					<label htmlFor="exampleInputPassword1">content</label>
-					<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="enter small plan" name="desc" defaultValue={desc}/>
+					<input type="text" className="form-control" classID="exampleInputPassword1" placeholder="please enter description" name="desc" defaultValue={desc}/>
 				</div>
 				<div className="form-group">
 					<label>begin time</label>

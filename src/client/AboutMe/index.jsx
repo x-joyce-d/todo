@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import moment from 'moment'
 
-export default class AboutMe extends React.Component {
+@inject('store')
+@observer
+export default class Aboutme extends React.Component {
   render(){
-    return ()
+    return (
+      <div>updateing...</div>
+    )
   }
 }

@@ -16,7 +16,16 @@ export default class List extends React.Component{
 	}
 	componentDidMount(){
 		this.props.store.init()
+    this.reverse()
 	}
+  reverse = evt => {
+    const {currentItem,list} = this.props.store.goalStore
+    let newList=[];
+    for(var i=list.length-1;i>=0;i++){
+      newList.push(list[i])
+      console.log(list[i]);
+    }
+  }
 	handleDetail = (evt,item) =>{
 		this.props.store.showDetail(item.id)
 	}
