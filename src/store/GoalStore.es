@@ -12,7 +12,7 @@ export default class {
   @computed get newList(){
     return this.list.sort((a,b)=>{
       console.log("45",a,b)
-      return a.create_time > b.create_time
+      return a.create_time > b.create_time ? -1 : 1
     })
     console.log("45465",this.list)
   }
