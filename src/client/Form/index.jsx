@@ -30,6 +30,9 @@ export default class Form extends React.Component {
 		}
 		this.props.store.goHome()
 	}
+  handleCancel=evt=>{
+    this.props.store.goHome()
+  }
 	render () {
 		const { store, title } = this.props
 		const { content, desc, beginTime, endTime } = store.goalStore.currentItem || {}
@@ -54,6 +57,7 @@ export default class Form extends React.Component {
 					<label >end time</label>
 					<input type="datetime-local" name="endTime" defaultValue={endTime || default_time} className="form-control"/>
 				</div>
+        <button type="button" className="btn btn-warning" onClick={evt=>this.handleCancel()}>cancel</button>&nbsp;&nbsp;
 				<button type="submit" className="btn btn-primary">Submit</button>
 			</form>
 		)
