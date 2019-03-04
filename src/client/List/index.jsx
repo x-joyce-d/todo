@@ -16,16 +16,7 @@ export default class List extends React.Component{
 	}
 	componentDidMount(){
 		this.props.store.init()
-		this.reverse()
-		// setTimeout(()=>{},6000)
-	}
-	reverse = evt => {
-		const {currentItem,list} = this.props.store.goalStore
-		let newList=[];
-		for(var i=list.length-1;i>=0;i++){
-			newList.push(list[i])
-			console.log(list[i]);
-		}
+		// window.setInterval(this.computeProgress(),60000)
 	}
 	handleDetail = (evt,item) =>{
 		this.props.store.showDetail(item.id)
@@ -47,30 +38,34 @@ export default class List extends React.Component{
 			return 0
 		}
 		return Math.floor(value*100)
-		console.log("45646")
 	}
 	render(){
 		const { store, title, visible } = this.props
 		return(
 			<div className={!visible ? 'list_hidden' : ''}>
-				{store.goalStore.list.map(item=>(
-					<ul className="list-group " key={item.id}>
-						<li className="list-group-item active">
-								<h4 className="list-group-item-heading">{item.content}
-								</h4>
-								<p className="list-group-item-text" >{item.desc}
-								</p>
-								<p className="list-group-item-text" >
-								<em>{moment(item.create_time).format("YYYY-MM-DD HH:mm")}</em>
-								</p>
-								<p>
-									<meter value={this.computeProgress(item)} max="100" high="80"></meter>
-								</p>
-								<button type="button" className="btn btn-info" onClick={evt => this.handleDetail(evt,item)} data-index={this.index} >detail</button>&nbsp;&nbsp;
-								<button type="button" className="btn btn-warning" onClick={evt => this.handleDelete(evt,item)}>delete</button>&nbsp;&nbsp;
-						</li>
-					</ul>
-				))}
+				<div className="btns">
+					<button type="button" className="btn btn-primary" onClick={evt=>this.finish()}>finished</button>
+					<button type="button" className="btn btn-primary" onClick={evt=>this.doing()}>doing</button>
+					<button type="button" className="btn btn-primary" onClick={evt=>this.unfinished()}>unfinished</button>
+				</div>
+				<ul className="list-group">
+					{store.goalStore.newList.map(item=>(
+							<li className="list-group-item active"  key={item.id}>
+									<h4 className="list-group-item-heading">{item.content}
+									</h4>
+									<p className="list-group-item-text">{item.desc}
+									</p>
+									<p className="list-group-item-text">
+									<em>{moment(item.create_time).format("YYYY-MM-DD HH:mm")}</em>
+									</p>
+									<p>
+										<meter value={this.computeProgress(item)} max="100" high="80"></meter>
+									</p>
+									<button type="button" className="btn btn-info" onClick={evt => this.handleDetail(evt,item)} data-index={this.index} >detail</button>&nbsp;&nbsp;
+									<button type="button" className="btn btn-warning" onClick={evt => this.handleDelete(evt,item)}>delete</button>&nbsp;&nbsp;
+							</li>
+					))}
+				</ul>
 			</div>
 		)
 	}

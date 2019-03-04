@@ -30,9 +30,9 @@ export default class Form extends React.Component {
 		}
 		this.props.store.goHome()
 	}
-  handleCancel = evt => { //cancel
-    this.props.store.goHome()
-  }
+	handleCancel = evt => { //cancel
+		this.props.store.goHome()
+	}
 	render () {
 		const { store, title } = this.props
 		const { content, desc, beginTime, endTime } = store.goalStore.currentItem || {}

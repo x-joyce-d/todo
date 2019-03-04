@@ -5,16 +5,25 @@ export default class {
 
 	@observable list = []
 	@observable currentId = ''
-	@observable bgColor = ''
 
 	@computed get currentItem(){
 		return this.list.find(item => item.id === this.currentId)
 	}
+  @computed get newList(){
+    return this.list.sort((a,b)=>{
+      console.log("45",a,b)
+      return a.create_time > b.create_time
+    })
+    console.log("45465",this.list)
+  }
   query:Function = async () => {
     this.list = await goalApis.query()
+    // for(let i=this.list.length-1;i>=0;i--){
+    //   this.newList.push(this.list[i])
+    // }
   }
 	get:Function = async (id) => {
-    this.detailData = await goalApis.get(id)
+    await goalApis.get(id)
   }
 	remove:Function = async (id:String) => {
 		this.currentId = id
