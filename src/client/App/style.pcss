@@ -5,14 +5,32 @@
   padding: 0 1em;
 }
 	.title{
+    width:100%;
 		text-align: center;
-		padding:20px 0 10px 0;
-		font-size:16px;
+		padding:10px 0 5px 0;
+		font-size:24px;
 		font-weight:bold;
 	}
 	.list {
-		margin-left:60px;
+    width:100%;
+    height:50px;
+    background:#fff;
+    border-top:1px solid #ccc;
+    position:fixed;
+    left:0;
+    bottom:0;
+    z-index:1000;
+    display:flex;
 	}
-  .button_hidden{
-    display: none;
+  li.button_hidden{
+    display:none !important;
   }
+  .item{
+    flex:1;
+    width:30px;
+    height:100%;
+    justify-content:center;
+  }
+  .item button{
+    margin:3px 5px;
+    }

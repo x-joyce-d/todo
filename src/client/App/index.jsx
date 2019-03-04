@@ -32,43 +32,41 @@ export default class APP extends React.Component {
 			case '/modify':
 				mainBody=<Form />
 				break
-      case '/aboutme':
-        mainBody=<Aboutme/>
-        break
+			case '/aboutme':
+				mainBody=<Aboutme/>
+				break
 			case '/feedback':
 				mainBody=<Feedback />
 				break
 		}
 		return (
 			<div className='app'>
-				<div className="container">
+				<div className="container box">
 					<div className="title">{title}</div>
 					<ul className="list nav nav-pills">
-					  <li role="presentation">
+						<li role="presentation" className="item">
 							<button type="button" className="btn btn-primary" onClick={evt => this.handleAdd()}>add</button>
 						</li>
-					  <li role="presentation">
+						<li role="presentation" className="item">
 							<button type="button" className="btn btn-primary" onClick={evt => store.showFeedback()}>feedback</button>
 						</li>
-            <li role="presentation">
-              <button type="button" className="btn btn-primary" onClick={evt => store.showAboutme()}>about me</button>
-            </li>
-            {
-              <List/> && <li role="presentation" className="active button_hidden">
-              							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
-              						</li>
-            }
-
+						<li role="presentation" className="item">
+							<button type="button" className="btn btn-primary" onClick={evt => store.showAboutme()}>about me</button>
+						</li>
+						{
+							<List/> && <li role="presentation" className="button_hidden item active">
+														<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
+													</li>
+						}
+						<li role="presentation" className="item active">
+							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
+					 </li>
 					</ul>
 					<hr />
 					<div>
 						<List visible={mainBody===null} />
 					</div>
 					{mainBody}
-			{/*<div>
-						<List className={store.uiStore.listVis ? 'show':'hidden'}/>
-						<Form className={store.uiStore.isShow ? 'show':'hidden'}/>
-					</div>*/}
 				</div>
 			</div>
 		)

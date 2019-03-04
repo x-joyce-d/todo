@@ -16,24 +16,22 @@ export default class List extends React.Component{
 	}
 	componentDidMount(){
 		this.props.store.init()
-    this.reverse()
+		this.reverse()
+		// setTimeout(()=>{},6000)
 	}
-  reverse = evt => {
-    const {currentItem,list} = this.props.store.goalStore
-    let newList=[];
-    for(var i=list.length-1;i>=0;i++){
-      newList.push(list[i])
-      console.log(list[i]);
-    }
-  }
+	reverse = evt => {
+		const {currentItem,list} = this.props.store.goalStore
+		let newList=[];
+		for(var i=list.length-1;i>=0;i++){
+			newList.push(list[i])
+			console.log(list[i]);
+		}
+	}
 	handleDetail = (evt,item) =>{
 		this.props.store.showDetail(item.id)
 	}
 	handleDelete = (evt,item) =>{
 		this.props.store.goalStore.remove(item.id)
-	}
-	handleProgress = (evt,item) => {
-		this.props.store.showProgress(item.id)
 	}
 	computeProgress ({beginTime, endTime}) {
 		beginTime = moment(beginTime).toDate().getTime()
@@ -49,6 +47,7 @@ export default class List extends React.Component{
 			return 0
 		}
 		return Math.floor(value*100)
+		console.log("45646")
 	}
 	render(){
 		const { store, title, visible } = this.props

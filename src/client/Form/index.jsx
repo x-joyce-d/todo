@@ -30,7 +30,7 @@ export default class Form extends React.Component {
 		}
 		this.props.store.goHome()
 	}
-  handleCancel = evt => {
+  handleCancel = evt => { //cancel
     this.props.store.goHome()
   }
 	render () {
