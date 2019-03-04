@@ -53,9 +53,12 @@ export default class APP extends React.Component {
             <li role="presentation">
               <button type="button" className="btn btn-primary" onClick={evt => store.showAboutme()}>about me</button>
             </li>
-						<li role="presentation" className="active" visible={store.showFeedback() && store.showDetail()}>
-							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
-						</li>
+            {
+              <List/> && <li role="presentation" className="active button_hidden">
+              							<button type="button" className="btn btn-primary" onClick={evt=>store.goHome()}>back</button>
+              						</li>
+            }
+
 					</ul>
 					<hr />
 					<div>
