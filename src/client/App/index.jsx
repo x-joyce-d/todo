@@ -7,7 +7,7 @@ import './style.pcss'
 
 @inject('store')
 @observer
-export default class APP extends React.Component {
+export default class App extends React.Component {
   static propTypes = {
     title: PropTypes.string,
   }
