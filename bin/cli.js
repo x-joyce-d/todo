@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 process.env.NODE_ENV = 'producton'
 const optimist = require('optimist')
 const path = require('path')

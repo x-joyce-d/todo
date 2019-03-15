@@ -10,7 +10,7 @@ import Aboutme from '../Aboutme'
 
 @inject('store')
 @observer
-export default class APP extends React.Component {
+export default class App extends React.Component {
 	static propTypes = {
 		title: PropTypes.string,
 	}

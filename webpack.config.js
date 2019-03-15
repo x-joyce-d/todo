@@ -17,16 +17,19 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.(es|jsx|js)$/,
+      test: /\.(es|jsx|js)$/i,
       exclude: /node_modules/,
       use: 'babel-loader',
     }, {
-      test: /\.p?css$/,
+      test: /\.p?css$/i,
       use: [
         MiniCssExtractPlugin.loader,
         'css-loader',
         'postcss-loader',
       ],
+    }, {
+       test: /\.(png|jpg|jpeg|gif)$/i,
+       use: 'url-loader',
     }]
   },
   plugins: [
