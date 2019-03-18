@@ -1,4 +1,6 @@
-import {action} from 'mobx'
+import { observable, action } from 'mobx'
+import { create, persist } from 'mobx-persist'
+
 import UiStore from './UiStore'
 import GoalStore from './GoalStore'
 import FeedbackStore from './FeedbackStore'
@@ -9,6 +11,8 @@ class MainStore {
   goalStore = new GoalStore()
   feedbackStore = new FeedbackStore()
   aboutmeStore = new AboutmeStore()
+
+  @persist @observable count = 0
 
   init:Function = async () => {
     this.uiStore.loading = true
@@ -37,4 +41,6 @@ class MainStore {
 	}
 }
 
-export default new MainStore()
+const store = new MainStore()
+create()('mainStore', store)
+export default store

@@ -1,0 +1,50 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "includes": ["\\.es$", "\\.js$"],
+  "excludes": ["_bak", "\\.bak$", "^\\."],
+  "plugins": [{
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "manual": {
+          "index": "./README.md",
+          "asset": "./manual/asset",
+          "globalIndex": true,
+          "files": [
+          ]
+        }
+      }
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {
+        "all": true
+      }
+    },
+    {
+      "name": "esdoc-external-ecmascript-plugin"
+    },
+    {
+      "name": "esdoc-flow-type-plugin"
+    },
+    {
+      "name": "esdoc-jsx-plugin",
+      "option": {
+        "enable": true
+      }
+    },
+    {
+      "name": "esdoc-react-plugin"
+    },
+    {
+      "name": "esdoc-importpath-plugin",
+      "option": {
+        "stripPackageName": true,
+        "replaces": [
+          {"from": "src/", "to": "~/"},
+          {"from": "\\.(es|jsx)", "to": ""}
+        ]
+      }
+    }
+  ]
+}

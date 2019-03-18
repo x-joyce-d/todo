@@ -10,7 +10,8 @@
     "build": "npm-run-all build:*",
     "build:client": "cross-env NODE_ENV=production webpack",
     "build:server": "babel -o ./index.js ./src/server.es",
-    "lint": "eslint --fix 'bin/*.js' 'src/**/*.es' 'src/**/*.jsx' 'test/**/*.es'"
+    "lint": "eslint --fix 'bin/*.js' 'src/**/*.es' 'src/**/*.jsx' 'test/**/*.es'",
+    "docs": "esdoc"
   },
   "bin": {},
   "preferGlobal": true,
@@ -46,6 +47,14 @@
     "babel-register": "^6.26.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-external-ecmascript-plugin": "^1.0.0",
+    "esdoc-flow-type-plugin": "^1.1.0",
+    "esdoc-importpath-plugin": "^1.0.2",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-react-plugin": "^1.0.1",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.12.1",
     "eslint-plugin-mocha": "^5.2.1",
     "eslint-plugin-react": "^7.12.4",
@@ -56,6 +65,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-utilities": "^0.8.0",
     "precss": "^4.0.0",
+    "url-loader": "^1.1.2",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.5.1"
